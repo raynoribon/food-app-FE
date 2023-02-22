@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row py-5">
+    <div class="col-sm-3">
+      <div class="nav flex-column nav-pills">
+        <a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" routerLink="./orders" role="tab"
+          aria-controls="v-pills-orders" aria-selected="false">{{'CUSTOMERPAGE.Orders' | translate}}</a>
+        <button class="btn btn-danger " (click)="this.custAuthService.logout()"> <i class="fa fa-sign-out"></i> {{'CUSTOMERPAGE.SignOut' | translate}} ({{customerProfile.fullName}})</button>
+      </div>
+    </div>
+
+    <div class="col-sm-9">
+     <router-outlet></router-outlet>
+    </div>
+  </div>
+
+
+</div>

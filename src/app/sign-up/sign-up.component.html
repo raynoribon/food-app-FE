@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 py-3">
+      <div class="">
+        <div class="card-header text-center">
+          <h4>{{'REGISTER.CreateAccount' | translate}}</h4>
+          <p *ngIf="errorMessage" class="text-danger text-left">Error: {{errorMessage}}</p>
+          <p *ngIf="successMessage" class="text-success text-left">{{successMessage}}</p>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="">{{'REGISTER.FirstName' | translate}}<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                  <input type="text" class="form-control" id="fname" name="fname" formControlName="fname"
+                    placeholder="{{'REGISTER.EnterFname' | translate}}">
+                </div> 
+              </div> 
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="">{{'REGISTER.LastName' | translate}}<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                  <input type="text" class="form-control" id="uname" name="uname" formControlName="uname"
+                    placeholder="{{'REGISTER.EnterLname' | translate}}">
+                </div> 
+              </div> 
+
+              <div class="form-group col-sm-12 col-md-12">
+                <label for="">{{'REGISTER.Email' | translate}}<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                  <input type="email" [class.is-invalid]="f.email.invalid && f.email.touched" class="form-control"
+                    id="email" name="email" formControlName="email" placeholder="{{'REGISTER.EnterEmail' | translate}}">
+                </div>
+              </div>
+
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="">{{'REGISTER.Phone' | translate}}<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                  <input type="text" class="form-control" id="phone" name="phone" formControlName="phone"
+                    placeholder="{{'REGISTER.EnterPhone' | translate}}">
+                </div>
+              </div> 
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="">{{'REGISTER.Password' | translate}}<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+
+                  <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password" name="password"
+                    formControlName="password" placeholder="{{'REGISTER.EnterPassword' | translate}}">
+                </div>
+                <!--<div *ngIf="submitted && registerForm.get('password').errors" class="alert alert-danger">
+                  <div *ngIf="registerForm.get('password').errors.required">
+                     Password is required
+                  </div>
+                </div>-->
+              </div>
+
+              <div class="form-group col-sm-12 col-md-6">
+                <label for="">{{'REGISTER.CPassword' | translate}}<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+
+                  <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="confirmPassword"
+                    name="confirmPassword" formControlName="confirmPassword"
+                    placeholder="{{'REGISTER.EnterCPassword' | translate}}">
+                </div>
+              
+              </div>
+
+              <div class="col-sm-12 d-flex">
+                <button *ngIf="!submitted" class="btn btn-outline-danger btn-block" type="submit">
+                  {{'REGISTER.Submit' | translate}}</button>
+                <button *ngIf="submitted" class="btn btn-outline-danger btn-block" [disabled]="submitted"
+                  [class.disabled]="submitted">
+                  {{'REGISTER.Submitted' | translate}}</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

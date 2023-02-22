@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row py-3">
+        <div class="p-3 bg-danger rounded w-100 d-flex justify-content-start flex-row"> 
+            <input class="w-50"  type="text"  id="" placeholder="Seach by food name.." [(ngModel)]="searchText" name="searchText">
+           
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-sm-12 col-md-12 col-lg-12  restaurant" *ngIf="errorMsg">
+           <p class="text-italic text-center no-display">No Items to display</p>
+          </div>
+    </div>
+    
+    <div class="row mx-5 mt-3">
+        <div class="col-sm-12 col-md-6 col-lg-3  restaurant" *ngFor="let _menu of menu |  searchBy:{name:
+            searchText} ">
+            <!--<div class="badge"><span class="badge badge-danger">New</span></div>-->
+            <img [src]="_menu.photoUrl" alt="">
+            <h3><a routerLink="/../products/{{_menu.id}}">{{_menu.name}}</a></h3>
+            <!-- <p><strong>Category:</strong> </p> -->
+            <p class="ingredients">{{_menu.description.substr(0,50)}} ...</p>
+            <!-- <p class="currency"> {{getIsoCode()}} {{_menu.product_price}}</p> -->
+            <button class="btn"
+            [class.disabled]="_menu.quantity < 1"
+            [class.btn-warning]="_menu.quantity < 1"
+            (click)="addToCart(_menu)">{{_menu.quantity < 1 ? "No Stock" : "Add to cart"}}</button>
+            <!--<button >Out of Stock</button>-->
+          </div>
+    </div>
+</div>
